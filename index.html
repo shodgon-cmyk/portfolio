@@ -65,8 +65,9 @@
   .case:first-of-type { margin-top: 0; padding-top: 0; }
 
 
-  .case-head { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; margin-bottom: 3rem; }
-  .case-logo { height: 36px; width: auto; object-fit: contain; object-position: left; display: block; margin-bottom: 1rem; }
+  .case-head { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; margin-bottom: 3rem; }
+  .case-head > div, .case-head > .role-box { min-width: 0; }
+  .case-logo { height: 36px; max-width: 100%; object-fit: contain; object-position: left; display: block; margin-bottom: 1rem; }
   .case-label { font-family: var(--head); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); margin-bottom: 0.4rem; }
   h3 { font-family: var(--head); font-weight: 800; font-size: clamp(1.6rem,3vw,2.2rem); line-height: 1.1; letter-spacing: -0.01em; color: var(--blue); }
   .case-year { font-family: var(--head); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); margin-top: 0.5rem; }
@@ -230,8 +231,7 @@
           <img class="case-logo" src="images/image-01.webp" alt="Service NSW">
           <p class="case-label">Service NSW &middot; Transport for NSW</p>
           <h3>Toll Relief<br>product design</h3>
-          <p class="case-year">2024</p>
-        </div>
+          </div>
         <div class="role-box"><p class="role-label">My role</p>
           <p>Lead Product Designer within an Agile squad of Engineers and Product Management, collaborating with internal and external stakeholders and partners.</p>
           </div></div>
@@ -254,12 +254,12 @@
           <p class="cl">Solution</p>
           <p>Designs moved from sketch to working prototype, tested at each stage and refined accordingly. Using the Service NSW design system (GEL), page designs used established components to deliver a consistent, predictable, and accessible experience.</p>
           <p>A key challenge was communicating two separate toll relief schemes simultaneously. Feedback mechanisms were embedded and monitored regularly.</p>
-          <p class="cl">Outcomes</p>
-          <div class="stats">
-            <div class="stat"><div class="stat-n">9K</div><div class="stat-l">Customers on day one</div></div>
-            <div class="stat"><div class="stat-n">$3M+</div><div class="stat-l">Claimed on launch day</div></div>
-            <div class="stat"><div class="stat-n">4.5/5</div><div class="stat-l">Ease of use rating</div></div>
-            <div class="stat"><div class="stat-n">47K+</div><div class="stat-l">Claims in month one</div></div>
+          <p class="cl" style="margin-top:2rem;">Outcomes</p>
+          <div class="stats" style="flex-wrap:wrap;">
+            <div class="stat" style="flex:1 1 45%;border-bottom:1px solid var(--rule);"><div class="stat-n">9K</div><div class="stat-l">Customers on day one</div></div>
+            <div class="stat" style="flex:1 1 45%;border-bottom:1px solid var(--rule);"><div class="stat-n">$3M+</div><div class="stat-l">Claimed on launch day</div></div>
+            <div class="stat" style="flex:1 1 45%;"><div class="stat-n">4.5/5</div><div class="stat-l">Ease of use rating</div></div>
+            <div class="stat" style="flex:1 1 45%;"><div class="stat-n">47K+</div><div class="stat-l">Claims in month one</div></div>
           </div>
         </div>
       </div>
@@ -282,8 +282,7 @@
           <img class="case-logo" src="images/image-05.webp" alt="Ryder" style="height:30px;">
           <p class="case-label">Ryder &middot; United States</p>
           <h3>Last mile delivery<br>experience design</h3>
-          <p class="case-year">2021</p>
-        </div>
+          </div>
         <div class="role-box"><p class="role-label">My role</p>
           <p>Lead UX Designer, overseeing a team comprising a researcher and designer, integrated with a US based client and offshore development team.</p>
           </div></div>
@@ -319,8 +318,7 @@
           <img class="case-logo" src="images/image-08.webp" alt="Westpac" style="height:26px;">
           <p class="case-label">Westpac</p>
           <h3>Institutional banking<br>system design</h3>
-          <p class="case-year">2022</p>
-        </div>
+          </div>
         <div class="role-box"><p class="role-label">My role</p>
           <p>Lead UX Designer, within a large cross-functional consultancy team.</p>
           </div></div>
