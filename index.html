@@ -95,9 +95,9 @@
   .img-frame-pair img:hover { opacity: 0.85; }
   .img-frame img { cursor: pointer; transition: opacity 0.2s; }
   .img-frame img:hover { opacity: 0.85; }
-  .img-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 999; align-items: center; justify-content: center; padding: 2rem; }
+  .img-modal { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 999; align-items: flex-start; justify-content: center; padding: 2rem; overflow-y: auto; }
   .img-modal.open { display: flex; }
-  .img-modal img { max-width: 90vw; max-height: 88vh; border-radius: 8px; box-shadow: 0 8px 48px rgba(0,0,0,0.5); display: block; }
+  .img-modal img { max-width: 90vw; width: auto; height: auto; border-radius: 8px; box-shadow: 0 8px 48px rgba(0,0,0,0.5); display: block; margin: 2rem auto; }
   .img-modal-close { position: fixed; top: 1.5rem; right: 1.5rem; background: none; border: none; color: #fff; font-size: 2rem; cursor: pointer; line-height: 1; font-family: var(--head); font-weight: 300; }
   .img-exhibit { margin-top: 2rem; }
   .img-exhibit + .img-exhibit { margin-top: 3rem; }
@@ -113,11 +113,11 @@
   .case-images .img-label { font-family: var(--head); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.75rem; padding-bottom: 0.6rem; border-bottom: 2px solid var(--blue); display: block; }
   .imgs-single img { width: 100%; display: block; border: 1px solid var(--rule); box-shadow: 0 12px 48px rgba(0,0,0,0.14); min-height: 320px; object-fit: cover; object-position: top; }
   .imgs-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-  .imgs-pair img { width: 100%; display: block; border: 1px solid var(--rule); box-shadow: 0 12px 48px rgba(0,0,0,0.14); min-height: 380px; object-fit: cover; object-position: top; }
+  .imgs-pair img { width: 100%; display: block; border: 1px solid var(--rule); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
   .imgs-featured { display: grid; grid-template-columns: 3fr 2fr; gap: 2rem; align-items: start; }
-  .imgs-featured .featured-main img { width: 100%; display: block; border: 1px solid var(--rule); box-shadow: 0 12px 48px rgba(0,0,0,0.14); min-height: 480px; object-fit: cover; object-position: top; }
+  .imgs-featured .featured-main img { width: 100%; display: block; border: 1px solid var(--rule); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
   .imgs-featured .featured-stack { display: flex; flex-direction: column; gap: 2rem; }
-  .imgs-featured .featured-stack img { width: 100%; display: block; border: 1px solid var(--rule); box-shadow: 0 12px 48px rgba(0,0,0,0.14); min-height: 220px; object-fit: cover; object-position: top; }
+  .imgs-featured .featured-stack img { width: 100%; display: block; border: 1px solid var(--rule); box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
   .img-cap { font-family: var(--head); font-weight: 600; font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); margin-top: 0.75rem; display: block; }
 
   #other { background: var(--bg); border-top: 1px solid var(--rule); }
@@ -263,15 +263,18 @@
           </div>
         </div>
       </div>
-      <div class="case-images">
+            <div class="case-images">
         <div class="img-exhibit">
-          <div class="img-frame" style="margin-bottom:1rem;">
-            <img src="images/image-02.webp" alt="Toll Tracker design" onclick="openModal(this)">
+          <div class="img-frame-pair" style="background:#efefed; border-radius:8px; padding:1rem; gap:1rem; margin-bottom:1.5rem;">
+            <img src="images/image-02.webp" alt="Toll Tracker — $60 weekly cap scheme" onclick="openModal(this)" style="border-radius:4px;">
+            <img src="images/image-03.webp" alt="Toll Tracker — 40% rebate scheme" onclick="openModal(this)" style="border-radius:4px;">
           </div>
-          <div class="img-frame-pair">
-            <img src="images/image-03.webp" alt="Customer journey map" onclick="openModal(this)">
-            <img src="images/image-04.webp" alt="User flow" onclick="openModal(this)">
+          <div class="img-frame-pair" style="grid-template-columns:1fr 1fr 1fr; background:#efefed; border-radius:8px; padding:1rem; gap:1rem;">
+            <img src="images/image-04.webp" alt="Toll Tracker linking screen" onclick="openModal(this)" style="border-radius:4px;">
+            <img src="images/image-05.webp" alt="Weekly breakdown" onclick="openModal(this)" style="border-radius:4px;">
+            <img src="images/image-06.webp" alt="Claim confirmation" onclick="openModal(this)" style="border-radius:4px;">
           </div>
+          <div style="background:#efefed; border-radius:8px; padding:1rem; display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem;"><img style="width:100%; display:block; border-radius:4px;" onclick="openModal(this)" src="images/image-07.webp" alt="Customer journey map"><img style="width:100%; display:block; border-radius:4px;" onclick="openModal(this)" src="images/image-08.webp" alt="User flow"></div>
         </div>
       </div>
     </div>
@@ -279,7 +282,7 @@
     <div class="case">
       <div class="case-head">
         <div>
-          <img class="case-logo" src="images/image-05.webp" alt="Ryder" style="height:30px;">
+          <img class="case-logo" src="images/image-09.webp" alt="Ryder" style="height:30px;">
           <p class="case-label">Ryder &middot; United States</p>
           <h3>Last mile delivery<br>experience design</h3>
           </div>
@@ -300,14 +303,22 @@
           <p>An intuitive, unified experience for Ryder Last Mile staff, customers, and end consumers, integrating seamlessly with existing off-the-shelf solutions.</p>
           <p>The design streamlined IA and task flows, minimised screen volume and nesting, and reduced cognitive load through radically simplified layouts and interactions.</p>
           <p>A library of UI and interaction patterns ensures future-proof consistency throughout coming releases.</p>
+          <p class="cl" style="margin-top:2rem;">Outcomes</p>
+          <div class="stats" style="flex-wrap:wrap;">
+            <div class="stat" style="flex:1 1 45%;border-bottom:1px solid var(--rule);"><div class="stat-n" style="font-size:1rem;">Unified</div><div class="stat-l">Experience across staff, customers and consumers</div></div>
+            <div class="stat" style="flex:1 1 45%;border-bottom:1px solid var(--rule);"><div class="stat-n" style="font-size:1rem;">MVP</div><div class="stat-l">Defined and prioritised from discovery insights</div></div>
+            <div class="stat" style="flex:1 1 45%;"><div class="stat-n" style="font-size:1rem;">2</div><div class="stat-l">Agile release cycles delivered</div></div>
+            <div class="stat" style="flex:1 1 45%;"><div class="stat-n" style="font-size:1rem;">Pattern library</div><div class="stat-l">Established for future consistency</div></div>
+          </div>
         </div>
       </div>
       <div class="case-images">
         <div class="img-exhibit">
           <div class="img-frame-pair">
-            <img src="images/image-06.webp" alt="Screenshot 1" onclick="openModal(this)">
-            <img src="images/image-07.webp" alt="Screenshot 2" onclick="openModal(this)">
+            <img src="images/image-10.webp" alt="Screenshot 1" onclick="openModal(this)">
+            <img src="images/image-11.webp" alt="Screenshot 2" onclick="openModal(this)">
           </div>
+          
         </div>
       </div>
     </div>
@@ -315,7 +326,7 @@
     <div class="case">
       <div class="case-head">
         <div>
-          <img class="case-logo" src="images/image-08.webp" alt="Westpac" style="height:26px;">
+          <img class="case-logo" src="images/image-12.webp" alt="Westpac" style="height:26px;">
           <p class="case-label">Westpac</p>
           <h3>Institutional banking<br>system design</h3>
           </div>
@@ -335,13 +346,23 @@
           <p class="cl">Solution</p>
           <p>A series of streamlined processes and designs, validated with the staff who use them every day. The design enabled a user stories backlog for implementation and confirmed the suitability of Westpac's chosen future platform.</p>
           <p>Screen designs made use of the existing Westpac design system, allowing efficiencies in output and easy alignment with the internal design team.</p>
+          <p class="cl" style="margin-top:2rem;">Outcomes</p>
+          <div class="stats" style="flex-wrap:wrap;">
+            <div class="stat" style="flex:1 1 45%;border-bottom:1px solid var(--rule);"><div class="stat-n" style="font-size:1rem;">MVP</div><div class="stat-l">Delivered to meet regulatory deadline</div></div>
+            <div class="stat" style="flex:1 1 45%;border-bottom:1px solid var(--rule);"><div class="stat-n" style="font-size:1rem;">Validated</div><div class="stat-l">Designs tested with staff through usability testing</div></div>
+            <div class="stat" style="flex:1 1 45%;"><div class="stat-n" style="font-size:1rem;">Backlog</div><div class="stat-l">User stories created, enabling development to proceed</div></div>
+            <div class="stat" style="flex:1 1 45%;"><div class="stat-n" style="font-size:1rem;">Confirmed</div><div class="stat-l">Suitability of chosen future platform</div></div>
+          </div>
         </div>
       </div>
       <div class="case-images">
         <div class="img-exhibit">
-          <div class="img-frame-pair">
-            <img src="images/image-09.webp" alt="Screenshot 1" onclick="openModal(this)">
-            <img src="images/image-10.webp" alt="Screenshot 2" onclick="openModal(this)">
+          <div style="background:#efefed; border-radius:8px; padding:1rem; margin-bottom:1.5rem;">
+            <img src="images/image-13.webp" alt="Westpac ICE dashboard" onclick="openModal(this)" style="width:100%; display:block; border-radius:4px;">
+          </div>
+          <div class="img-frame-pair" style="background:#efefed; border-radius:8px; padding:1rem; gap:1rem;">
+            <img src="images/image-14.webp" alt="Credit application case" onclick="openModal(this)" style="border-radius:4px;">
+            <img src="images/image-15.webp" alt="Set up screen" onclick="openModal(this)" style="border-radius:4px;">
           </div>
         </div>
       </div>
@@ -358,7 +379,7 @@
     </div>
     <div class="other-grid">
       <div class="other-card">
-        <img class="other-card-img" src="images/image-11.webp" alt="University of Sydney" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-16.webp" alt="University of Sydney" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">University of Sydney</p>
           <h4>University website &amp; student experience</h4>
@@ -367,7 +388,7 @@
         </div>
       </div>
       <div class="other-card">
-        <img class="other-card-img" src="images/image-12.webp" alt="Torii Consulting" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-17.webp" alt="Torii Consulting" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">Torii Consulting</p>
           <h4>News subscriber experience design</h4>
@@ -376,7 +397,7 @@
         </div>
       </div>
       <div class="other-card">
-        <img class="other-card-img" src="images/image-13.webp" alt="Aventus" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-18.webp" alt="Aventus" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">Aventus</p>
           <h4>SuperCentre website redesign</h4>
@@ -385,7 +406,7 @@
         </div>
       </div>
       <div class="other-card">
-        <img class="other-card-img" src="images/image-14.webp" alt="Qantas" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-19.webp" alt="Qantas" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">Qantas</p>
           <h4>Business Rewards onboarding</h4>
@@ -394,7 +415,7 @@
         </div>
       </div>
       <div class="other-card">
-        <img class="other-card-img" src="images/image-15.webp" alt="IAG" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-20.webp" alt="IAG" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">IAG</p>
           <h4>SMB policy adjustments interface</h4>
@@ -403,7 +424,7 @@
         </div>
       </div>
       <div class="other-card">
-        <img class="other-card-img" src="images/image-16.webp" alt="Macquarie Bank" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-21.webp" alt="Macquarie Bank" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">Macquarie Bank</p>
           <h4>Deal management system</h4>
@@ -412,7 +433,7 @@
         </div>
       </div>
       <div class="other-card">
-        <img class="other-card-img" src="images/image-17.webp" alt="Optus Loop Live" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-22.webp" alt="Optus Loop Live" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">Optus</p>
           <h4>Loop Live sign-up design</h4>
@@ -421,7 +442,7 @@
         </div>
       </div>
       <div class="other-card">
-        <img class="other-card-img" src="images/image-18.webp" alt="Optus website" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-23.webp" alt="Optus website" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">Optus</p>
           <h4>optus.com.au redesign</h4>
