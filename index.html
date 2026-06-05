@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Simon Hodgon | Senior UX & Product Designer</title>
+<meta name="description" content="Portfolio of Simon Hodgon, Senior UX &amp; Product Designer with over a decade delivering end-to-end customer experience across government, financial services, media, and higher education.">
+<meta name="theme-color" content="#1a6bb5">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300&display=swap" rel="stylesheet">
 <style>
@@ -109,6 +111,9 @@
   .img-frame-pair { background: #efefed; border-radius: 12px; padding: 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   .img-frame-pair img { width: 100%; display: block; border-radius: 6px; box-shadow: 0 2px 16px rgba(0,0,0,0.10); }
   .img-credit { font-style: italic; font-size: 0.88rem; color: var(--mid); margin-top: 0.85rem; text-align: center; }
+  /* Images carry width/height attrs (for CLS); with width:100% they MUST get
+     height:auto so the aspect ratio derives from the attrs instead of the raw px height. */
+  .case-images img { height: auto; }
   .case-images { margin-top: 3.5rem; padding: 3rem; border-top: 3px solid var(--rule); background: var(--off); }
   .case-images .img-label { font-family: var(--head); font-weight: 700; font-size: 0.8rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--blue); margin-bottom: 1.75rem; padding-bottom: 0.6rem; border-bottom: 2px solid var(--blue); display: block; }
   .imgs-single img { width: 100%; display: block; border: 1px solid var(--rule); box-shadow: 0 12px 48px rgba(0,0,0,0.14); min-height: 320px; object-fit: cover; object-position: top; }
@@ -140,8 +145,25 @@
   .footer-links a:hover { color: var(--blue); }
 
   @keyframes fadeUp { from { opacity:0; transform:translateY(18px); } to { opacity:1; transform:translateY(0); } }
-  .fu { opacity:0; animation: fadeUp 0.65s cubic-bezier(0.22,1,0.36,1) forwards; }
+  /* Resting state is visible — guarantees content shows even if the entrance
+     animation never runs (reduced-motion, throttled tab, animation unsupported). */
+  .fu { opacity: 1; }
+  @media (prefers-reduced-motion: no-preference) {
+    .fu { opacity: 0; animation: fadeUp 0.65s cubic-bezier(0.22,1,0.36,1) forwards; }
+  }
+  /* Safety net: if the entrance animation never paints (throttled/backgrounded
+     tab, animation unsupported), force content visible so it's never lost. */
+  html.fu-fallback .fu { opacity: 1 !important; }
   .d1{animation-delay:.05s} .d2{animation-delay:.15s} .d3{animation-delay:.28s} .d4{animation-delay:.4s}
+
+  /* Keyboard-only focus visibility */
+  a:focus-visible, button:focus-visible, [tabindex]:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 3px; }
+
+  /* Skip link */
+  .skip-link { position: fixed; top: 0; left: 0; z-index: 200; transform: translateY(-120%); background: var(--blue); color: #fff; font-family: var(--head); font-weight: 700; font-size: 0.9rem; padding: 0.65rem 1.1rem; text-decoration: none; border-radius: 0 0 4px 0; transition: transform 0.16s ease; }
+  .skip-link:focus { transform: translateY(0); }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
   @media(max-width:780px){
     .hero-inner{grid-template-columns:1fr;gap:3rem;}
@@ -154,10 +176,16 @@
     .nav-links{display:none;}
     h1{font-size:3.5rem;}
   }
+  /* Stack multi-up image rows (incl. the 3-up Toll Tracker row) on phones so
+     screenshots stay legible instead of shrinking to thumbnails. */
+  @media(max-width:620px){
+    .img-frame-pair{ grid-template-columns:1fr !important; }
+  }
 </style>
 </head>
 <body>
-<nav>
+<a class="skip-link" href="#main">Skip to content</a>
+<nav aria-label="Primary">
   <a href="#hero" class="nav-name">Simon Hodgon</a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -167,6 +195,7 @@
   </ul>
 </nav>
 
+<main id="main" tabindex="-1">
 <div class="container">
   <div id="hero">
     <div class="hero-inner">
@@ -177,7 +206,7 @@
         <p class="hero-role fu d3">Senior UX &amp; Product Designer</p>
         <div class="hero-contact fu d4">
           <a href="tel:0404613513">0404 613 513</a>
-          <a href="mailto:shodgon@gmail.com">shodgon@gmail.com</a>
+          <a href="/cdn-cgi/l/email-protection#57243f383330383917303a363e3b7934383a"><span class="__cf_email__" data-cfemail="becdd6d1dad9d1d0fed9d3dfd7d290ddd1d3">[email&#160;protected]</span></a>
           <a href="https://www.linkedin.com/in/simon-hodgon-64b7b92" target="_blank">LinkedIn</a>
         </div>
       </div>
@@ -228,7 +257,7 @@
     <div class="case">
       <div class="case-head">
         <div>
-          <img class="case-logo" src="images/image-01.webp" alt="Service NSW">
+          <img class="case-logo" src="images/image-01.webp" alt="Service NSW" width="371" height="136" loading="lazy" decoding="async">
           <p class="case-label">Service NSW &middot; Transport for NSW</p>
           <h3>Toll Relief<br>product design</h3>
           </div>
@@ -266,15 +295,15 @@
             <div class="case-images">
         <div class="img-exhibit">
           <div class="img-frame-pair" style="background:#efefed; border-radius:8px; padding:1rem; gap:1rem; margin-bottom:1.5rem;">
-            <img src="images/image-02.webp" alt="Toll Tracker — $60 weekly cap scheme" onclick="openModal(this)" style="border-radius:4px;">
-            <img src="images/image-03.webp" alt="Toll Tracker — 40% rebate scheme" onclick="openModal(this)" style="border-radius:4px;">
+            <img src="images/image-02.webp" alt="Toll Tracker — $60 weekly cap scheme" width="1652" height="4623" loading="lazy" decoding="async" onclick="openModal(this)" style="border-radius:4px;">
+            <img src="images/image-03.webp" alt="Toll Tracker — 40% rebate scheme" width="1652" height="4662" loading="lazy" decoding="async" onclick="openModal(this)" style="border-radius:4px;">
           </div>
           <div class="img-frame-pair" style="grid-template-columns:1fr 1fr 1fr; background:#efefed; border-radius:8px; padding:1rem; gap:1rem;">
-            <img src="images/image-04.webp" alt="Toll Tracker linking screen" onclick="openModal(this)" style="border-radius:4px;">
-            <img src="images/image-05.webp" alt="Weekly breakdown" onclick="openModal(this)" style="border-radius:4px;">
-            <img src="images/image-06.webp" alt="Claim confirmation" onclick="openModal(this)" style="border-radius:4px;">
+            <img src="images/image-04.webp" alt="Toll Tracker linking screen" width="2452" height="3450" loading="lazy" decoding="async" onclick="openModal(this)" style="border-radius:4px;">
+            <img src="images/image-05.webp" alt="Weekly breakdown" width="1652" height="2784" loading="lazy" decoding="async" onclick="openModal(this)" style="border-radius:4px;">
+            <img src="images/image-06.webp" alt="Claim confirmation" width="1652" height="2190" loading="lazy" decoding="async" onclick="openModal(this)" style="border-radius:4px;">
           </div>
-          <div style="background:#efefed; border-radius:8px; padding:1rem; display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem;"><img style="width:100%; display:block; border-radius:4px;" onclick="openModal(this)" src="images/image-07.webp" alt="Customer journey map"><img style="width:100%; display:block; border-radius:4px;" onclick="openModal(this)" src="images/image-08.webp" alt="User flow"></div>
+          <div style="background:#efefed; border-radius:8px; padding:1rem; display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem;"><img style="width:100%; display:block; border-radius:4px;" width="1252" height="510" loading="lazy" decoding="async" onclick="openModal(this)" src="images/image-07.webp" alt="Customer journey map"><img style="width:100%; display:block; border-radius:4px;" width="1252" height="733" loading="lazy" decoding="async" onclick="openModal(this)" src="images/image-08.webp" alt="User flow"></div>
         </div>
       </div>
     </div>
@@ -282,7 +311,7 @@
     <div class="case">
       <div class="case-head">
         <div>
-          <img class="case-logo" src="images/image-09.webp" alt="Ryder" style="height:30px;">
+          <img class="case-logo" src="images/image-09.webp" alt="Ryder" style="height:30px;" width="454" height="111" loading="lazy" decoding="async">
           <p class="case-label">Ryder &middot; United States</p>
           <h3>Last mile delivery<br>experience design</h3>
           </div>
@@ -315,8 +344,8 @@
       <div class="case-images">
         <div class="img-exhibit">
           <div class="img-frame-pair">
-            <img src="images/image-10.webp" alt="Screenshot 1" onclick="openModal(this)">
-            <img src="images/image-11.webp" alt="Screenshot 2" onclick="openModal(this)">
+            <img src="images/image-10.webp" alt="Ryder Last Mile — order management screen" width="1024" height="2323" loading="lazy" decoding="async" onclick="openModal(this)">
+            <img src="images/image-11.webp" alt="Ryder Last Mile — delivery tracking screen" width="1024" height="2241" loading="lazy" decoding="async" onclick="openModal(this)">
           </div>
           
         </div>
@@ -326,7 +355,7 @@
     <div class="case">
       <div class="case-head">
         <div>
-          <img class="case-logo" src="images/image-12.webp" alt="Westpac" style="height:26px;">
+          <img class="case-logo" src="images/image-12.webp" alt="Westpac" style="height:26px;" width="505" height="100" loading="lazy" decoding="async">
           <p class="case-label">Westpac</p>
           <h3>Institutional banking<br>system design</h3>
           </div>
@@ -358,11 +387,11 @@
       <div class="case-images">
         <div class="img-exhibit">
           <div style="background:#efefed; border-radius:8px; padding:1rem; margin-bottom:1.5rem;">
-            <img src="images/image-13.webp" alt="Westpac ICE dashboard" onclick="openModal(this)" style="width:100%; display:block; border-radius:4px;">
+            <img src="images/image-13.webp" alt="Westpac ICE dashboard" width="1492" height="1550" loading="lazy" decoding="async" onclick="openModal(this)" style="width:100%; display:block; border-radius:4px;">
           </div>
           <div class="img-frame-pair" style="background:#efefed; border-radius:8px; padding:1rem; gap:1rem;">
-            <img src="images/image-14.webp" alt="Credit application case" onclick="openModal(this)" style="border-radius:4px;">
-            <img src="images/image-15.webp" alt="Set up screen" onclick="openModal(this)" style="border-radius:4px;">
+            <img src="images/image-14.webp" alt="Credit application case" width="1492" height="2439" loading="lazy" decoding="async" onclick="openModal(this)" style="border-radius:4px;">
+            <img src="images/image-15.webp" alt="Set up screen" width="1504" height="1997" loading="lazy" decoding="async" onclick="openModal(this)" style="border-radius:4px;">
           </div>
         </div>
       </div>
@@ -379,7 +408,7 @@
     </div>
     <div class="other-grid">
       <div class="other-card">
-        <img class="other-card-img" src="images/image-16.webp" alt="University of Sydney" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-16.webp" alt="University of Sydney" width="2572" height="1652" loading="lazy" decoding="async" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">University of Sydney</p>
           <h4>University website &amp; student experience</h4>
@@ -388,7 +417,7 @@
         </div>
       </div>
       <div class="other-card">
-        <img class="other-card-img" src="images/image-17.webp" alt="Torii Consulting" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-17.webp" alt="Torii Consulting" width="1324" height="1050" loading="lazy" decoding="async" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">Torii Consulting</p>
           <h4>News subscriber experience design</h4>
@@ -397,7 +426,7 @@
         </div>
       </div>
       <div class="other-card">
-        <img class="other-card-img" src="images/image-18.webp" alt="Aventus" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-18.webp" alt="Aventus" width="1970" height="1190" loading="lazy" decoding="async" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">Aventus</p>
           <h4>SuperCentre website redesign</h4>
@@ -406,7 +435,7 @@
         </div>
       </div>
       <div class="other-card">
-        <img class="other-card-img" src="images/image-19.webp" alt="Qantas" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-19.webp" alt="Qantas" width="960" height="740" loading="lazy" decoding="async" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">Qantas</p>
           <h4>Business Rewards onboarding</h4>
@@ -415,7 +444,7 @@
         </div>
       </div>
       <div class="other-card">
-        <img class="other-card-img" src="images/image-20.webp" alt="IAG" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-20.webp" alt="IAG" width="1512" height="2281" loading="lazy" decoding="async" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">IAG</p>
           <h4>SMB policy adjustments interface</h4>
@@ -424,7 +453,7 @@
         </div>
       </div>
       <div class="other-card">
-        <img class="other-card-img" src="images/image-21.webp" alt="Macquarie Bank" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-21.webp" alt="Macquarie Bank" width="745" height="561" loading="lazy" decoding="async" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">Macquarie Bank</p>
           <h4>Deal management system</h4>
@@ -433,7 +462,7 @@
         </div>
       </div>
       <div class="other-card">
-        <img class="other-card-img" src="images/image-22.webp" alt="Optus Loop Live" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-22.webp" alt="Optus Loop Live" width="1352" height="2126" loading="lazy" decoding="async" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">Optus</p>
           <h4>Loop Live sign-up design</h4>
@@ -442,7 +471,7 @@
         </div>
       </div>
       <div class="other-card">
-        <img class="other-card-img" src="images/image-23.webp" alt="Optus website" onclick="openModal(this)">
+        <img class="other-card-img" src="images/image-23.webp" alt="Optus website" width="2522" height="1212" loading="lazy" decoding="async" onclick="openModal(this)">
         <div class="other-card-body">
           <p class="other-label">Optus</p>
           <h4>optus.com.au redesign</h4>
@@ -453,6 +482,7 @@
     </div>
   </div>
 </section>
+</main>
 
 <footer id="contact">
   <div class="container">
@@ -461,30 +491,58 @@
     <h2 style="text-align:center;margin-bottom:1.75rem;">Let&rsquo;s work <span class="b">together</span></h2>
     <div class="footer-links">
       <a href="tel:0404613513">0404 613 513</a>
-      <a href="mailto:shodgon@gmail.com">shodgon@gmail.com</a>
+      <a href="/cdn-cgi/l/email-protection#97e4fff8f3f0f8f9d7f0faf6fefbb9f4f8fa"><span class="__cf_email__" data-cfemail="5a2932353e3d35341a3d373b333674393537">[email&#160;protected]</span></a>
       <a href="https://www.linkedin.com/in/simon-hodgon-64b7b92" target="_blank">LinkedIn</a>
     </div>
   </div>
 </footer>
 
 
-<div class="img-modal" id="imgModal" onclick="closeModal()">
-  <button class="img-modal-close" onclick="closeModal()">&times;</button>
-  <img id="modalImg" src="" alt="Enlarged view">
+<div class="img-modal" id="imgModal" role="dialog" aria-modal="true" aria-label="Image viewer" onclick="closeModal()">
+  <button class="img-modal-close" onclick="closeModal()" aria-label="Close image viewer">&times;</button>
+  <img id="modalImg" alt="Enlarged view">
 </div>
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+var lastFocused = null;
 function openModal(el) {
-  document.getElementById('modalImg').src = el.src;
+  lastFocused = document.activeElement;
+  var modalImg = document.getElementById('modalImg');
+  modalImg.src = el.src;
+  modalImg.alt = el.alt ? ('Enlarged: ' + el.alt) : 'Enlarged view';
   document.getElementById('imgModal').classList.add('open');
   document.body.style.overflow = 'hidden';
+  document.querySelector('.img-modal-close').focus();
 }
 function closeModal() {
   document.getElementById('imgModal').classList.remove('open');
   document.body.style.overflow = '';
+  if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+  lastFocused = null;
 }
 document.addEventListener('keydown', function(e) {
+  var open = document.getElementById('imgModal').classList.contains('open');
+  if (!open) return;
   if (e.key === 'Escape') closeModal();
+  else if (e.key === 'Tab') { e.preventDefault(); document.querySelector('.img-modal-close').focus(); }
 });
+// Make the image-zoom triggers operable by keyboard (Enter / Space), not just click.
+document.addEventListener('DOMContentLoaded', function() {
+  var triggers = document.querySelectorAll('img[onclick^="openModal"]');
+  Array.prototype.forEach.call(triggers, function(img) {
+    img.setAttribute('role', 'button');
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('aria-label', 'View larger: ' + (img.getAttribute('alt') || 'image'));
+    img.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ' || e.key === 'Spacebar') {
+        e.preventDefault();
+        openModal(img);
+      }
+    });
+  });
+});
+// Safety net: if the entrance animation never paints (throttled/backgrounded tab,
+// animation unsupported), reveal content after the animation window so it's never lost.
+setTimeout(function() { document.documentElement.classList.add('fu-fallback'); }, 1500);
 </script>
 </body>
 </html>
